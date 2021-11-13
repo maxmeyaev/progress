@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200&display=swap');
+
+/* to create custom properties use root scope */
+:root {
+    --line-boarder-fill: aqua;
+    --line-boarder-empty: #e0e0e0;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', sans-serif;
+    background-color: #f6f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 30px;
+    max-width: 100%;
+    width: 350px;
+}
+.progress-container::before { /* whenever use before always include content:''; */
+    content:'';
+    background-color: var(--line-boarder-empty);
+    position: absolute;
+    transform: translateY(-50%); /* to make the line in the middle, utilize transform function (translateY)
+                                 move up 50% */
+
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+    transition: 0.4s ease;
+}
+.progress {
+    background-color: var(--line-boarder-fill);
+    position: absolute;
+    transform: translateY(-50%); /* to make the line in the middle, utilize transform function (translateY)
+                                 move up 50% */
+
+    top: 50%;
+    left: 0;
+    height: 4px;
+    width: 50%;
+    z-index: -1;
+    transition: 0.4s ease;
+}
+.circle {
+    background-color: #fff;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--line-boarder-empty);
+    transition: .4s ease;
+}
+
+.circle.active {
+    border-color: var(--line-boarder-fill);
+}
+.button {
+    background-color: var(--line-boarder-fill);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+.button.active {
+    transform: scale(0.98);
+}
+.button:focus {
+    outline: 0;
+}
+.button:disabled {
+    background-color: var(--line-boarder-empty);
+    cursor: not-allowed;
+}
